@@ -21,7 +21,7 @@
         <script type="text/babel">
 
             class CardEditor extends React.Component {
-                
+                // This will be the card editor to create new cards
                 render() {
                     return (
                         <div>
@@ -32,6 +32,7 @@
             }
 
             class CardViewer extends React.Component {
+                // This will be the card viewer for viewing the front and back of cards
                 render() {
                     return (
                         <div>
@@ -44,13 +45,24 @@
             }
 
             class App extends React.Component {
+
+                constructor(props) {
+                    super(props);
+                    this.state = {
+                        editor: true,
+                    };
+
+                }
                 render(){
-                    return (
-                        <div>
+                    if (this.state.editor) {
+                        return (
                             <CardEditor />
-                <CardViewer />
-                        </div>
-                    );
+                        );
+                        } else {
+                            return (
+                            <CardViewer />
+                        );
+                    }
                 }
 
              
