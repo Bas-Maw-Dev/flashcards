@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <title>Flashcards App</title>
+        <style>
+            #app {
+                text-align: center;
+                font-family: sans-serif;
+            }
+
+            ul {
+                list-style-position: inside;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app" />
+        <script type="text/babel">
+
+            class CardEditor extends React.Component {
+                
+                render() {
+                    return (
+                        <div>
+                            This is the editor
+                        </div>
+                    );
+                }
+            }
+
+            class CardViewer extends React.Component {
+                render() {
+                    return (
+                        <div>
+                            This is the Viewer.
+                        </div>
+
+                    );
+                }
+
+            }
+
+            class App extends React.Component {
+                render(){
+                    return (
+                        <div>
+                            <CardEditor />
+                <CardViewer />
+                        </div>
+                    );
+                }
+
+             
+            }
+
+            ReactDOM.render(<App />, document.querySelector("#app"));
+        </script>
+    </body>
+</html>
