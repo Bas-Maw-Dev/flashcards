@@ -22,11 +22,34 @@
 
             class CardEditor extends React.Component {
                 // This will be the card editor to create new cards
+
                 render() {
+                    const rows = this.props.cards.map((card, i) => {
+                        return (
+                            <tr key={i}>
+                                <td>{card.front}</td>
+                                <td>{card.back}</td>
+                                <td><button>Delete</button></td>
+                            </tr>
+                        );
+                    });
+
                     return (
                         <div>
-                            <p>This is the editor</p>
+                            <h2>Card Editor</h2>
                             <hr />
+                            <table>
+                                <thead>
+                                  <tr>
+                                    <td>Front</td>
+                                    <td>Back</td>
+                                    <td>Delete</td>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    {rows}
+                                </tbody>
+                            </table>
                             <button onClick={this.props.switchMode} >Go to viewer</button>
                         </div>
                     );
@@ -54,17 +77,26 @@
                     super(props);
                     this.state = {
                         editor: true,
+                        cards: [{front: "test front", back: "test back"},
+                                {front: "test1 front", back: "test1 back"}],
+
                     };
 
                 }
                 render(){
                     if (this.state.editor) {
                         return (
-                            <CardEditor switchMode={this.switchMode} />
+                            <CardEditor
+                              cards={this.state.cards}
+                              switchMode={this.switchMode}
+                            />
                         );
                         } else {
                             return (
-                            <CardViewer switchMode={this.switchMode} />
+                            <CardViewer
+                            cards={this.state.cards}
+                            switchMode={this.switchMode}
+                            />
                         );
                     }
                 }
